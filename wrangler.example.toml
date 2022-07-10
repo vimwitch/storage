@@ -1,0 +1,25 @@
+name = "storage"
+type = "javascript"
+account_id = ""
+workers_dev = true
+zone_id = ""
+compatibility_date = "2022-07-10"
+
+kv_namespaces = [
+  { binding = "STORAGE_BINDINGS", id = "", preview_id = "" }
+]
+
+[env.production]
+kv_namespaces = [
+  { binding = "STORAGE_BINDINGS", id = "", preview_id = "" }
+]
+
+[site]
+bucket = "dist"
+entry-point = "dist"
+
+[build]
+command = "npm run build && echo '{\"name\": \"storage\",\"main\":\"index.js\"}' > dist/package.json"
+
+[build.upload]
+format = "service-worker"
